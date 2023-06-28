@@ -53,3 +53,11 @@ jobs:
       # 압축한 프로젝트를 S3로 전송합니다.
     - name: Upload to S3
       run: aws s3 cp --region ap-northeast-2 ./Aws-Github-Actions-Practice.zip s3://github-actions1/Aws-Github-Actions-Practice.zip
+
+      # CodeDeploy에게 배포 명령을 내립니다.
+    - name: Code Deploy
+      run: >
+        aws deploy create-deployment --application-name github-action1
+        --deployment-config-name CodeDeployDefault.AllAtOnce
+        --deployment-group-name github-action1-group
+        --s3-location bucket=github-actions1,bundleType=zip,key=Aws-Github-Actions-Practice.zip
