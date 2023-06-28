@@ -34,7 +34,7 @@ jobs:
       with:
         arguments: build
     - name: Add permission
-      run: chmod +x gradlew
+      run: chmod +x ./gradlew
 
       # build한 후 프로젝트를 압축합니다.
     - name: Make zip file
@@ -52,4 +52,4 @@ jobs:
 
       # 압축한 프로젝트를 S3로 전송합니다.
     - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./Aws-Github-Actions-Practice s3://$github-actions1/Aws-Github-Actions-Practice
+      run: aws s3 cp --region ap-northeast-2 ./Aws-Github-Actions-Practice s3://github-actions1/Aws-Github-Actions-Practice
